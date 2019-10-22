@@ -5,13 +5,16 @@ x2=1
 y2=1
 lrect=(width/2)-25
 lrect2=(width/2)+25
+punti1=0
+punti2=0
+aggpunti=10
 def setup():
     size(500,440)
     background(0,0,255)
     stroke(0,255,0)
 def draw():
-    global x,y,x2,y2,lrect,lrect2
-    background(255,255,255)
+    global x,y,x2,y2,lrect,lrect2,punti1,punti2,aggpunti
+    background(0,0,0)
     ellipse(x,y,50,50)
     x+=2*(x2)
     y+=2*(y2)
@@ -24,7 +27,28 @@ def draw():
     rect(lrect2,0,80,25)
     if y<=40 and x>=lrect2 and x<=lrect2+80 :
         y2*= -1
-        
+    text(punti1, 420, height-80); 
+    text(punti2, 20, 80);       
+    textSize(40);
+    if y>=width :
+        punti2=punti2+aggpunti
+        y=height/2
+    if y<=0 :
+        punti1=punti1+aggpunti
+        y=height/2
+    if punti1>=30 :
+        aggpunti=0
+        rect(0,0,width,height)
+        fill(0,0,0)
+        textSize(60);
+        text("PLAYER 1 WIN", width/2-200 , height/2);
+    if punti2>=30 :
+        aggpunti=0
+        rect(0,0,width,height)
+        fill(0,0,0)
+        textSize(60);
+        text("PLAYER 2 WIN", width/2-200 , height/2);
+    
 def keyPressed():
     global lrect,lrect2
     if keyCode == RIGHT:
