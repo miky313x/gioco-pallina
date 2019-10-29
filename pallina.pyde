@@ -22,16 +22,16 @@ def draw():
     if x>=width or x<0:
         x2*= -1
     rect(lrect,height-25,80,25)
-    if y+25>height-25 and x>=lrect and x<=lrect+80 :
-        y2*= -1
+    if y+25>height-25 and x>=lrect and x<=lrect+80 :               #controlla se la pallina si trova all altezza della racchetta e compresa nella sua lunghezza
+        y2*= -1                                                    #cambia la direzione decrementando la y
     rect(lrect2,0,80,25)
-    if y<=40 and x>=lrect2 and x<=lrect2+80 :
+    if y<=40 and x>=lrect2 and x<=lrect2+80 :                      
         y2*= -1
     text(punti1, 420, height-80); 
     text(punti2, 20, 80);       
     textSize(40);
-    if y>=width :
-        punti2=punti2+aggpunti
+    if y>=width :                                                  #incrementa lo score quando la pallina tocca il foglio sia in alto che in basso
+        punti2=punti2+aggpunti                                     
         y=height/2
     if y<=0 :
         punti1=punti1+aggpunti
@@ -49,7 +49,7 @@ def draw():
         textSize(60);
         text("PLAYER 2 WIN", width/2-200 , height/2);
     
-def keyPressed():
+def keyPressed():                                                  #funzioni per riconoscere il tasto con cui far muovere la racchetta
     global lrect,lrect2
     if keyCode == RIGHT:
         print("right")
@@ -57,7 +57,7 @@ def keyPressed():
         if lrect>=width-80:
             lrect=500-80
         
-    if keyCode == LEFT:
+    if keyCode == LEFT:                    
         print("left")
         lrect=lrect-25
         if lrect<=0:
